@@ -1,0 +1,85 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px 16px;
+  background-color: #eef2f9;
+  color: #222;
+}
+
+h1 {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #274b99;
+}
+
+.button-row {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+button {
+  padding: 14px 18px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  background-color: #3366cc;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #1f3d80;
+  transition:
+    transform 0.1s ease,
+    box-shadow 0.1s ease;
+}
+
+button:hover {
+  background-color: #2d5bb8;
+}
+
+button:active {
+  transform: translateY(4px);
+  box-shadow: 0 0 0 #1f3d80;
+}
+
+.joke-box {
+  margin-top: 20px;
+  padding: 16px;
+  background-color: white;
+  border-radius: 10px;
+  border-left: 6px solid #3366cc;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.joke-box p {
+  margin: 6px 0;
+  line-height: 1.4;
+}
+
+.rating {
+  font-weight: bold;
+  color: #007700;
+}
+
+.winner {
+  font-weight: bold;
+  color: #cc6600;
+}
+
+@media (min-width: 600px) {
+  body {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+
+  h1 {
+    font-size: 2rem;
+    text-align: left;
+  }
+
+  .button-row {
+    flex-direction: row;
+  }
+}
