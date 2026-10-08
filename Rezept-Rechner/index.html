@@ -1,9 +1,23 @@
 <!doctype html>
-<html lang="en">
+<html lang="de">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rezept Rechner</title>
+    <link rel="stylesheet" href="index.css" />
   </head>
-  <body></body>
+  <body>
+    <h1>Rezept-Rechner</h1>
+
+  <div class="controls">
+      <label for="servingsInput">Portionen:</label>
+      <input type="number" id="servingsInput" value="4" />
+      <button type="button" id="calculateBtn">Umrechnen</button>
+    </div>
+
+    <div id="recipeOutput"></div>
+  </div>
+
+    <script src="rezepte.js"></script>
+  </body>
 </html>

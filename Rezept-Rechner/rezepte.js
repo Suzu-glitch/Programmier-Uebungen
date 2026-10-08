@@ -10,14 +10,12 @@ const recipe = {
     { amount: 30, unit: "g", name: "Butter" },
   ],
 };
+
 function calculateFactor(baseServings, targetServings) {
   let factor = targetServings / baseServings;
   return factor;
 }
-function calculateFactor(baseServings, targetServings) {
-  let factor = targetServings / baseServings;
-  return factor;
-}
+
 function scaleIngredient(ingredient, factor) {
   let newAmount = ingredient.amount * factor;
   let rounded = Math.round(newAmount * 10) / 10;
@@ -28,3 +26,29 @@ function scaleIngredient(ingredient, factor) {
     name: ingredient.name,
   };
 }
+
+function scaleRecipe(ingredients, baseServings, targetServings) {
+  let factor = calculateFactor(baseServings, targetServings);
+  let scaled = [];
+
+  for (let i = 0; i < ingredients.length; i++) {
+    let newIngredient = scaleIngredient(ingredients[i], factor);
+    scaled.push(newIngredient);
+  }
+
+  return scaled;
+}
+
+function formatRecipe(recipeName, servings, ingredients) {
+  console.log("=== " + recipeName + " ===");
+  console.log("Portionen: " + servings);
+  console.log("");
+
+  for (let i = 0; i < ingredients.length; i++) {
+    let ing = ingredients[i];
+    console.log(ing.amount + " " + ing.unit + " " + ing.name);
+  }
+}
+
+let scaledIngredients = scaleRecipe(recipe.ingredients, recipe.servings, 6);
+formatRecipe(recipe.name, 6, scaledIngredients);

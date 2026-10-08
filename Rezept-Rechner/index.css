@@ -1,0 +1,96 @@
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: #0d1117;
+  color: #e6e6e6;
+  margin: 0;
+  padding: 40px 20px;
+}
+
+.page {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 1.8rem;
+  margin-bottom: 24px;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+label {
+  font-size: 1rem;
+}
+
+input[type="number"] {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #2d3748;
+  background-color: #1a2333;
+  color: #e6e6e6;
+  width: 80px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  background-color: #3b82f6;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #2563eb;
+}
+
+.recipe-card {
+  background-color: #161f2e;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 500px;
+}
+
+.recipe-title {
+  color: #f5a623;
+  font-size: 1.3rem;
+  margin-bottom: 16px;
+}
+
+.ingredient-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #2d3748;
+}
+
+.ingredient-row:last-child {
+  border-bottom: none;
+}
+
+.amount {
+  color: #f5a623;
+  font-weight: bold;
+  min-width: 50px;
+  text-align: right;
+}
+
+.unit {
+  color: #9ca3af;
+  min-width: 50px;
+}
+
+.ingredient-name {
+  flex: 1;
+  text-align: left;
+  margin-left: 10px;
+}
