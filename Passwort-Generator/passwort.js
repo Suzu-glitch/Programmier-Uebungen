@@ -8,13 +8,30 @@ function getRandomChar(characters) {
   return characters[randomIndex];
 }
 
-function generatePassword(length) {
-  const allCharacters =
-    LOWERCASE_LETTERS + UPPERCASE_LETTERS + DIGITS + SYMBOLS;
+function buildCharPool(useLower, useUpper, useDigits, useSymbols) {
+  let pool = "";
+
+  if (useLower) {
+    pool = pool + LOWERCASE_LETTERS;
+  }
+  if (useUpper) {
+    pool = pool + UPPERCASE_LETTERS;
+  }
+  if (useDigits) {
+    pool = pool + DIGITS;
+  }
+  if (useSymbols) {
+    pool = pool + SYMBOLS;
+  }
+
+  return pool;
+}
+
+function generatePassword(length, charPool) {
   let password = "";
 
   for (let i = 0; i < length; i++) {
-    password = password + getRandomChar(allCharacters);
+    password = password + getRandomChar(charPool);
   }
 
   return password;
@@ -30,5 +47,10 @@ function evaluateStrength(password) {
   return "stark";
 }
 
-const testPassword = generatePassword(12);
+const testPassword = generatePassword(
+  12,
+  buildCharPool(true, true, true, true),
+);
 console.log(testPassword, evaluateStrength(testPassword));
+
+console.log(buildCharPool(true, false, true, false));
