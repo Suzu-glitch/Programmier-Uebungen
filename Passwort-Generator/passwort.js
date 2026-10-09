@@ -36,21 +36,57 @@ function generatePassword(length, charPool) {
 
   return password;
 }
+function ratePassword(password, poolSize) {
+  const score = password.length * poolSize;
 
-function evaluateStrength(password) {
-  if (password.length < 8) {
-    return "schwach";
+  if (score < 200) {
+    return { label: "Schwach", score: score };
+  } else if (score < 500) {
+    return { label: "Mittel", score: score };
+  } else {
+    return { label: "Stark", score: score };
   }
-  if (password.length < 12) {
-    return "mittel";
+}
+function createPassword(length, useLower, useUpper, useDigits, useSymbols) {
+  const pool = buildCharPool(useLower, useUpper, useDigits, useSymbols);
+
+  if (pool.length === 0) {
+    console.log("Fehler: Mindestens eine Zeichengruppe auswählen!");
+    return null;
   }
-  return "stark";
+
+  const password = generatePassword(length, pool);
+  const rating = ratePassword(password, pool.length);
+
+  console.log("=== Neues Passwort ===");
+  console.log("Passwort: " + password);
+  console.log("Länge: " + password.length);
+  console.log("Pool: " + pool.length + " Zeichen");
+  console.log("Score: " + rating.score);
+  console.log("Stärke: " + rating.label);
+
+  return { password: password, rating: rating, poolSize: pool.length };
 }
 
-const testPassword = generatePassword(
-  12,
-  buildCharPool(true, true, true, true),
-);
-console.log(testPassword, evaluateStrength(testPassword));
+function findStrongest(count) {
+  let bestPassword = null;
+  let bestScore = 0;
 
-console.log(buildCharPool(true, false, true, false));
+  for (let i = 0; i < count; i++) {
+    const result = createPassword(12, true, true, true, true);
+    if (result.rating.score > bestScore) {
+      bestScore = result.rating.score;
+      bestPassword = result.password;
+    }
+  }
+
+  console.log("--- Bestes von " + count + " Passwörtern ---");
+  console.log(bestPassword);
+  return bestPassword;
+}
+
+createPassword(12, true, true, true, true);
+createPassword(8, true, false, true, false);
+createPassword(20, true, true, true, true);
+createPassword(10, false, false, false, false);
+findStrongest(5);
