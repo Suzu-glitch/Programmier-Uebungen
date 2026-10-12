@@ -4,9 +4,35 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Passwort-Generator</title>
+    <link rel="stylesheet" href="passwort.css" />
   </head>
   <body>
     <h1>Passwort-Generator</h1>
+
+    <div class="length-row">
+      <label for="length-input">Länge:</label>
+      <input type="number" id="length-input" value="12" min="4" max="64" />
+    </div>
+
+    <div class="button-row">
+      <button id="generate-button">Passwort generieren</button>
+      <button id="strong-button">Nur stark (alle Zeichen)</button>
+    </div>
+
+    <div id="password-display">...</div>
+
+    <div id="strength-bar">
+      <div id="strength-bar-fill"></div>
+    </div>
+    <p id="strength-text"></p>
+
+    <div class="info-row">
+      <span id="length-info"></span>
+      <span id="pool-info"></span>
+    </div>
+
+    <pre id="log-output"></pre>
+
     <script src="passwort.js"></script>
   </body>
 </html>
